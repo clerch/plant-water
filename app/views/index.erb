@@ -15,7 +15,7 @@
         <h4 class="modal-title"><span class="glyphicon glyphicon-leaf" aria-hidden="true"></span>Sign Up</h4>
       </div>
       <div class="modal-body">
-      <form method="post" action="/signup" class="form-horizontal">
+      <form method="post" action="/login" class="form-horizontal">
       <div class="form-group">
       
         <input type="text" name="email" class="form-control" placeholder="Email">
@@ -37,3 +37,18 @@
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+
+<!-- LOGIN FORM -->
+<div>
+  <form method="post" action="/login" class="form-horizontal">
+    <div class="form-group">
+      <input type="text" name="username" class="form-control" placeholder="Username">
+    </div>
+    <div class="form-group">
+      <input type="password" name="password" class="form-control" placeholder="Password">
+    </div>
+    <button type="submit" class="btn btn-success">Login</button>
+  </form>
+</div>
+
+
