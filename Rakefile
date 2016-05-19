@@ -20,3 +20,10 @@ desc 'Retrieves the current schema version number'
 task "db:version" do
   puts "Current version: #{ActiveRecord::Migrator.current_version}"
 end
+
+#run this to text 
+
+desc 'sends a test text to company phone'
+task "db:sms" do 
+  Notification.test_sms
+end
