@@ -10,8 +10,9 @@ gem 'sinatra-activerecord'
 
 gem 'puma'
 gem 'tux'
-gem 'twilio'
+gem 'twilio-ruby'
 gem 'dotenv'
+gem "phony"
 
 group :development, :test do
   gem 'pry'
