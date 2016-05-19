@@ -6,57 +6,45 @@
         <h1>Select Your Plants</h1>
         <hr class="small">
         <div class="row">
-<!--         each loop goes here -->
+
+<!-- Looping over each plant in the database and outputting the plant card
+  Each plant card is clickable and will open a modal to register the plant. -->
+        <% @plant_types.each do | plant | %>
+        <a data-toggle="modal" data-target="#addPlantModal<%=plant.id%>">
           <div class="col-md-4">
             <div class="portfolio-item">
-              <img class="img-portfolio img-responsive" src="img/string-of-pearls.jpg">
-              <i>Plant name</i>
+              <img class="img-portfolio img-responsive" src="<%= plant.image_url %>">
+              <i><%= plant.common_name %></i>
             </div>
           </div>
-<!-- each loop ends here -->          
-          <div class="col-md-4">
-            <div class="portfolio-item">
-              <img class="img-portfolio img-responsive" src="img/bonsai.jpeg">
-              <div><i>Plant name</i><span class="glyphicon glyphicon-plus"></span></div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="portfolio-item">
-              <img class="img-portfolio img-responsive" src="img/asparagus-fern.jpg">
-              <div><i>Plant name</i><span class="glyphicon glyphicon-plus"></span></div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="portfolio-item">
-              <img class="img-portfolio img-responsive" src="img/dracaena.jpg">
-              <div><i>Plant name</i><span class="glyphicon glyphicon-plus"></span></div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="portfolio-item">
-              <img class="img-portfolio img-responsive" src="img/string-of-pearls.jpg">
-              <div><i>Plant name</i><span class="glyphicon glyphicon-plus"></span></div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="portfolio-item">
-              <img class="img-portfolio img-responsive" src="img/bonsai.jpeg">
-              <div><i>Plant name</i><span class="glyphicon glyphicon-plus"></span></div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="portfolio-item">
-              <img class="img-portfolio img-responsive" src="img/asparagus-fern.jpg">
-              <div><i>Plant name</i><span class="glyphicon glyphicon-plus"></span></div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="portfolio-item">
-              <img class="img-portfolio img-responsive" src="img/dracaena.jpg">
-              <div><i>Plant name</i><span class="glyphicon glyphicon-plus"></span></div>
-            </div>
-          </div>
-        </div>
+        </a>
+        <div class="modal fade" tabindex="-1" role="dialog" id="addPlantModal<%=plant.id%>">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add <%= plant.common_name %> to your collection</h4>
+              </div>
+              <div class="modal-body">
+                <form method="post" action="/add-user-plant" class="form-horizontal">
+                  <div class="form-group">
+                    <input type="text" name="custom_name" class="form-control" placeholder="Give your plant a unique name (eg: Kitchen <%= plant.common_name %>">
+                  </div>
+                  <div class="form-group">
+                    <input type="date" name="last_date_watered" class="form-control" placeholder="When did you last water your <%= plant.common_name %>?">
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-success">Add <%= plant.common_name %></button>
+                  </div>
+                </form>
+              </div>
+
+            </div><!-- /.modal-content -->
+          </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+        <% end %>
+
       </div>
     </div>
   </div>
+</div>
