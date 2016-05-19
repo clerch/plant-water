@@ -8,7 +8,7 @@ class AddUsersModel < ActiveRecord::Migration
     t.column :username, :string
     t.column :email, :string
     t.column :phone, :string
-    t.column :password, :date
+    t.column :password, :string
     t.timestamps
     end
   end
