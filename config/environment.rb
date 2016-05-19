@@ -10,6 +10,13 @@ require 'sinatra/contrib/all' # Requires cookies, among other things
 
 require 'pry'
 
+require 'twilio-ruby'
+require 'dotenv'
+
+#dotenv load
+Dotenv.load
+
+
 APP_ROOT = Pathname.new(File.expand_path('../../', __FILE__))
 APP_NAME = APP_ROOT.basename.to_s
 
@@ -29,3 +36,12 @@ require APP_ROOT.join('config', 'database')
 
 # Load the routes / actions
 require APP_ROOT.join('app', 'actions')
+
+
+#Twilio setup:
+# alternatively, you can preconfigure the client like so
+Twilio.configure do |config|
+  config.account_sid = ENV['ACCOUNT_SID']
+  config.auth_token = ENV['AUTH_TOKEN']
+end
+
