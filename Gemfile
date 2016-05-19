@@ -12,7 +12,8 @@ gem 'puma'
 gem 'tux'
 gem 'twilio-ruby'
 gem 'dotenv'
-gem "phony"
+gem 'phony'
+gem 'whenever'
 
 group :development, :test do
   gem 'pry'
