@@ -6,56 +6,20 @@
         <h1>Select Your Plants</h1>
         <hr class="small">
         <div class="row">
-<!--         each loop goes here -->
+
+<!-- Looping over each plant in the database and outputting the plant card
+Each plant card is clickable and will open a modal to register the plant. -->
+<% @plant_types.each do | plant | %>
+          <a data-toggle="modal" data-target="#signUpModal">
           <div class="col-md-4">
             <div class="portfolio-item">
-              <img class="img-portfolio img-responsive" src="img/string-of-pearls.jpg">
-              <i>Plant name</i>
+              <img class="img-portfolio img-responsive" src="<%= plant.image_url %>">
+              <i><%= plant.common_name %></i>
             </div>
           </div>
-<!-- each loop ends here -->          
-          <div class="col-md-4">
-            <div class="portfolio-item">
-              <img class="img-portfolio img-responsive" src="img/bonsai.jpeg">
-              <div><i>Plant name</i><span class="glyphicon glyphicon-plus"></span></div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="portfolio-item">
-              <img class="img-portfolio img-responsive" src="img/asparagus-fern.jpg">
-              <div><i>Plant name</i><span class="glyphicon glyphicon-plus"></span></div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="portfolio-item">
-              <img class="img-portfolio img-responsive" src="img/dracaena.jpg">
-              <div><i>Plant name</i><span class="glyphicon glyphicon-plus"></span></div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="portfolio-item">
-              <img class="img-portfolio img-responsive" src="img/string-of-pearls.jpg">
-              <div><i>Plant name</i><span class="glyphicon glyphicon-plus"></span></div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="portfolio-item">
-              <img class="img-portfolio img-responsive" src="img/bonsai.jpeg">
-              <div><i>Plant name</i><span class="glyphicon glyphicon-plus"></span></div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="portfolio-item">
-              <img class="img-portfolio img-responsive" src="img/asparagus-fern.jpg">
-              <div><i>Plant name</i><span class="glyphicon glyphicon-plus"></span></div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="portfolio-item">
-              <img class="img-portfolio img-responsive" src="img/dracaena.jpg">
-              <div><i>Plant name</i><span class="glyphicon glyphicon-plus"></span></div>
-            </div>
-          </div>
+          </a>
+<% end %>
+
         </div>
       </div>
     </div>
