@@ -9,11 +9,13 @@ class Plant < ActiveRecord::Base
     ((plant_type.high_water_frequency + plant_type.low_water_frequency)/2).to_i
   end
 
-
-  def needs_watering?
-    Date.today == (self.last_date_watered + self.custom_watering_frequency)
+  def next_water_date
+    last_date_watered.advance(days: custom_watering_frequency)
   end
 
+  def needs_watering?
+    Date.today >= next_water_date
+  end
 
   def send_notification
     message_body = "#{custom_name} needs to be watered!"

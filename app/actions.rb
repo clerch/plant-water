@@ -19,19 +19,19 @@ get '/all-plants' do
 end
 
 post '/add-plant' do
-    @new_plant = Plant.create(
+  @new_plant = Plant.create(
     user_id: current_user.id,
     plant_type_id: params[:plant_type_id],
     custom_name: params[:custom_name],
     last_date_watered: params[:last_date_watered],
     custom_watering_frequency: params[:custom_watering_frequency]
-  )
+    )
   #if @post validates, save
   if @new_plant.save
     redirect(back)
   else
     #if it doesn't validate, print error messages
-  erb(:"posts/new") 
+    erb(:"posts/new") 
   end
 
 
