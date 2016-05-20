@@ -4,23 +4,22 @@ class Notification < ActiveRecord::Base
   belongs_to :plant
 
 
-
-
-
-  def self.test_sms
-
-    @client = Twilio::REST::Client.new(ENV['ACCOUNT_SID'], ENV['AUTH_TOKEN'])
-    message = @client.account.messages.create(
-    body: 'Hello from the SKYNET!',
-    to: user.phone,    # Replace with your phone number
-    from: ENV['COMPANY_PHONE'])  # Replace with your Twilio number
-
-    puts message.sid
-
-
+  def check_watering_needs
+    plants = Plant.all
+    plants.each do |plant|
+      if plant.needs_watering?
+        send_notification
+      end
+    end  
   end
 
-
-
-
+  def send_notification
+    if user.communication_method == "sms"
+      TextMessage.new.send_message
+    elsif user.communication_method == "email"
+      #insert the method to send an email.
+    else 
+      return false
+    end
+  end
 end

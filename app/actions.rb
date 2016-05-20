@@ -31,6 +31,7 @@ post '/add-plant' do
     redirect(back)
   else
     #if it doesn't validate, print error messages
+    #fix this
   erb(:"posts/new") 
   end
 

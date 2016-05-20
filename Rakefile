@@ -33,12 +33,7 @@ end
 
 desc 'Sends a text message to a user with plants needing water'
 task "plants:thirsty" do
-  plants = Plant.all
-  plants.each do |plant|
-    if plant.needs_watering?
-      plant.send_notification
-    end
-  end  
+  Notification.check_watering_needs
 end
 
 desc 'populate the database with data'

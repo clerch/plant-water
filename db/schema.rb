@@ -11,14 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160518184756) do
+ActiveRecord::Schema.define(version: 20160520191937) do
 
-  create_table "notifications", force: :cascade do |t|
-    t.integer  "user_id"
-    t.string   "message"
+  create_table "messages", force: :cascade do |t|
+    t.string   "content"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "notifications", force: :cascade do |t|
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "message_id"
+    t.integer  "plant_id"
+  end
+
+  add_index "notifications", ["message_id"], name: "index_notifications_on_message_id"
+  add_index "notifications", ["user_id"], name: "index_notifications_on_user_id"
 
   create_table "plant_types", force: :cascade do |t|
     t.string   "image_url"
@@ -52,6 +62,7 @@ ActiveRecord::Schema.define(version: 20160518184756) do
     t.string   "password"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "communication_method"
   end
 
 end
