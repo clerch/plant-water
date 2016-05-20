@@ -6,7 +6,6 @@
     differences in how form elements appear between Firefox and IE
     See: http://necolas.github.com/normalize.css/
   -->
-  <link rel="stylesheet" href="/stylesheets/normalize.css">
   <!--
     application.css is where you put your styles
   -->
@@ -17,13 +16,42 @@
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script src="/javascript/application.js"></script>
-  <script src="/javascript/bootstrap.min.js"></script>
+<!--   <script src="/javascript/bootstrap.js"></script>
+ -->  <script src="/javascript/bootstrap.min.js"></script>
+  <script src="/javascript/jquery.js"></script>
 
   <title></title>
 </head>
 <body>
+<% if session["user_id"] %>
+<a id="menu-toggle" href="#" class="btn btn-dark btn-lg toggle">
+<span class="glyphicon glyphicon-leaf"></span>
+</a>
 
-
+<nav id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <a id="menu-close" href="#" class="btn btn-light btn-lg pull-right toggle"><span class="glyphicon glyphicon-close"></span></a>
+            <li class="sidebar-brand">
+                <a href="#top" onclick="$("#menu-close").click();">Welcome </a>
+            </li>
+            <li>
+                <a href="#top" onclick="$("#menu-close").click();">Home</a>
+            </li>
+            <li>
+                <a href="#about" onclick="$("#menu-close").click();">About</a>
+            </li>
+            <li>
+                <a href="#services" onclick="$("#menu-close").click();">Services</a>
+            </li>
+            <li>
+                <a href="#portfolio" onclick="$("#menu-close").click();">Portfolio</a>
+            </li>
+            <li>
+                <a href="/sign-out" onclick="$("#menu-close").click();">Sign Out</a>
+            </li>
+        </ul>
+    </nav>
+<% end %> 
   <%= yield %>
 </body>
 </html>
