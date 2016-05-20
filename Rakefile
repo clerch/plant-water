@@ -24,6 +24,18 @@ end
 #run this to text 
 
 desc 'sends a test text to company phone'
-task "db:sms" do 
+task "plants:sms" do 
   Notification.test_sms
 end
+
+
+desc 'Sends a text message to a user with plants needing water'
+task "plants:thirsty" do
+  plants = Plant.all
+  plants.each do |plant|
+    if plant.needs_watering?
+      plant.send_notification
+    end
+  end  
+end
+
