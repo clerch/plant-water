@@ -24,15 +24,16 @@
   <title></title>
 </head>
 <body>
+<% if session["user_id"] %>
 <a id="menu-toggle" href="#" class="btn btn-dark btn-lg toggle">
 <span class="glyphicon glyphicon-leaf"></span>
 </a>
-<%= if @current_user %>
+
 <nav id="sidebar-wrapper">
         <ul class="sidebar-nav">
             <a id="menu-close" href="#" class="btn btn-light btn-lg pull-right toggle"><span class="glyphicon glyphicon-close"></span></a>
             <li class="sidebar-brand">
-                <a href="#top" onclick="$("#menu-close").click();"></a>
+                <a href="#top" onclick="$("#menu-close").click();">Welcome </a>
             </li>
             <li>
                 <a href="#top" onclick="$("#menu-close").click();">Home</a>
@@ -47,11 +48,11 @@
                 <a href="#portfolio" onclick="$("#menu-close").click();">Portfolio</a>
             </li>
             <li>
-                <a href="#contact" onclick="$("#menu-close").click();">Contact</a>
+                <a href="/sign-out" onclick="$("#menu-close").click();">Sign Out</a>
             </li>
         </ul>
     </nav>
-<% end %>
+<% end %> 
   <%= yield %>
 </body>
 </html>
