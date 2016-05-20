@@ -33,7 +33,7 @@ end
 
 desc 'Sends a text message to a user with plants needing water'
 task "plants:thirsty" do
-  Notification.check_watering_needs
+  Plant.check_watering_needs
 end
 
 desc 'populate the database with data'

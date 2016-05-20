@@ -1,5 +1,3 @@
-# Homepage (Root path)
-#requiring 'user_actions.rb'
 
 require_relative 'user_actions'
 
@@ -18,21 +16,24 @@ get '/all-plants' do
   erb :'plants/index'
 end
 
-post '/add-plant' do
-  @new_plant = Plant.create(
-    user_id: current_user.id,
+post '/plant-add' do
+  @new_plant = Plant.new(
+    user_id: session[:user_id],
     plant_type_id: params[:plant_type_id],
     custom_name: params[:custom_name],
     last_date_watered: params[:last_date_watered],
     custom_watering_frequency: params[:custom_watering_frequency]
     )
-  #if @post validates, save
+  @new_plant.save_next_water_date
+
+  #if @new_plant validates, save
   if @new_plant.save
     redirect(back)
   else
-    erb(:"plants/all-plants") 
+    erb :'plants/show'
   end
 end
+
 
 
 

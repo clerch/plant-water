@@ -1,21 +1,20 @@
+require './lib/textmessage'
+
 class Notification < ActiveRecord::Base
+
 
   belongs_to :user
   belongs_to :plant
 
 
-  def check_watering_needs
-    plants = Plant.all
-    plants.each do |plant|
-      if plant.needs_watering?
-        send_notification
-      end
-    end  
-  end
+
 
   def send_notification
-    if user.communication_method == "sms"
-      TextMessage.new.send_message
+    if user.communication_method == "SMS"
+      TextMessage.new.send_message(self)
+      plant.last_date_watered = Date.today
+      plant.save_next_water_date
+      plant.save
     elsif user.communication_method == "email"
       #insert the method to send an email.
     else 

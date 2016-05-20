@@ -11,23 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160520191937) do
-
-  create_table "messages", force: :cascade do |t|
-    t.string   "content"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+ActiveRecord::Schema.define(version: 20160520230001) do
 
   create_table "notifications", force: :cascade do |t|
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "message_id"
     t.integer  "plant_id"
+    t.string   "message_content"
   end
 
-  add_index "notifications", ["message_id"], name: "index_notifications_on_message_id"
   add_index "notifications", ["user_id"], name: "index_notifications_on_user_id"
 
   create_table "plant_types", force: :cascade do |t|
@@ -53,6 +46,7 @@ ActiveRecord::Schema.define(version: 20160520191937) do
     t.integer  "custom_watering_frequency"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "next_water_date"
   end
 
   create_table "users", force: :cascade do |t|
