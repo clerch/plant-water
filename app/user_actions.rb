@@ -29,3 +29,16 @@ get '/sign-out' do
   session.clear
   redirect '/'
 end
+
+delete '/plant-delete' do
+  plant = Plant.find(params[:id])
+  plant.destroy
+  redirect(back)
+end
+
+post '/plant-update' do
+  plant = Plant.find(params[:id])
+  plant.custom_watering_frequency = params[:custom_watering_frequency]
+  plant.save
+  redirect(back)
+end
