@@ -1,6 +1,8 @@
 <section id="portfolio" class="portfolio">
   <div class="container">
     <div class="row">
+    <div class="hidden alert alert-success alert-dismissible" role="alert">
+    </div>
       <div class="col-lg-10 col-lg-offset-1 text-center">
         <!--       This heading will differ based on route add Ruby conditional here  -->   
         <h1>Select Your Plants</h1>
@@ -26,7 +28,7 @@
           <h4 class="modal-title"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add <%= plant.common_name %> to your collection</h4>
         </div>
         <div class="modal-body">
-          <form method="post" action="/plant-add" class="form-horizontal">
+          <form method="post" action="/plant-add" class="add-plant form-horizontal">
             <div class="form-group">
               <input type="text" name="custom_name" class="form-control" placeholder="Give your plant a unique name (eg: Kitchen <%= plant.common_name %>">
             </div>
@@ -37,10 +39,10 @@
               <label class="radio-inline"><input type="radio" value="<%= plant.low_water_frequency %>" name="custom_watering_frequency">Low Sunlight</label>
               <label class="radio-inline"><input type="radio" value="<%= (plant.low_water_frequency + plant.high_water_frequency) / 2 %>" name="custom_watering_frequency">Some Sunlight</label>
               <label class="radio-inline"><input type="radio" value="<%= plant.high_water_frequency %>" name="custom_watering_frequency">Lots of Sunlight</label>
-            </div> 
-            <div class="form-group">
-              <input type="hidden" name="user_id" class="form-control" value="">
             </div>
+            <div class="form-group">
+              <input type="hidden" name="plant_type_id" class="form-control" value="<%= plant.id %>">
+            </div> 
             <div class="modal-footer">
             <button type="submit" class="btn btn-success">Add <%= plant.common_name %></button>
             </div>

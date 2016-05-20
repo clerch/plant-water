@@ -14,11 +14,10 @@
   <link rel="stylesheet" href="/stylesheets/bootstrap-theme.css">
   <link rel="stylesheet" href="/stylesheets/stylish-portfolio.css">
 
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script src="/javascript/application.js"></script>
-<!--   <script src="/javascript/bootstrap.js"></script>
- -->  <script src="/javascript/bootstrap.min.js"></script>
-  <script src="/javascript/jquery.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="/javascript/bootstrap.min.js"></script>
+<script src="/javascript/application.js"></script>
+ 
 
   <title></title>
 </head>
@@ -32,20 +31,13 @@
         <ul class="sidebar-nav">
             <a id="menu-close" href="#" class="btn btn-light btn-lg pull-right toggle"><span class="glyphicon glyphicon-close"></span></a>
             <li class="sidebar-brand">
-                <a href="#top" onclick="$("#menu-close").click();">Welcome </a>
+                <a href="/plants" onclick="$("#menu-close").click();">Your Garden</a>
             </li>
-            <li>
-                <a href="#top" onclick="$("#menu-close").click();">Home</a>
+            <% user_plants.each do | plant | %>
+            <li class="plant-sidebar-listing" data-plant-id="<%= plant.id %>"><%= plant.custom_name %> - <%= plant.plant_type.common_name %><br />
+            <small><a class="remove-plant">Remove plant</a></small>
             </li>
-            <li>
-                <a href="#about" onclick="$("#menu-close").click();">About</a>
-            </li>
-            <li>
-                <a href="#services" onclick="$("#menu-close").click();">Services</a>
-            </li>
-            <li>
-                <a href="#portfolio" onclick="$("#menu-close").click();">Portfolio</a>
-            </li>
+            <% end %>
             <li>
                 <a href="/sign-out" onclick="$("#menu-close").click();">Sign Out</a>
             </li>

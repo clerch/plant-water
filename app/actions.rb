@@ -5,6 +5,11 @@ helpers do
   def current_user
     User.find_by(id: session[:user_id])
   end
+
+  def user_plants
+    Plant.where(user_id: session[:user_id])
+  end
+
 end
 
 get '/' do
@@ -17,6 +22,7 @@ get '/all-plants' do
 end
 
 post '/plant-add' do
+
   @new_plant = Plant.new(
     user_id: session[:user_id],
     plant_type_id: params[:plant_type_id],
@@ -28,7 +34,11 @@ post '/plant-add' do
 
   #if @new_plant validates, save
   if @new_plant.save
-    redirect(back)
+    if request.xhr?
+      json @new_plant
+    else
+      redirect(back)
+    end
   else
     erb :'plants/show'
   end

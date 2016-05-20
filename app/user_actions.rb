@@ -36,7 +36,7 @@ end
 
 
 
-get '/plants/:user_id' do
+get '/plants' do
   @user_plants = Plant.where(user_id: session["user_id"])
   erb :'plants/show'
 end
@@ -46,10 +46,9 @@ get '/sign-out' do
   redirect '/'
 end
 
-delete '/plant-delete' do
+delete '/plant-delete/:id' do
   plant = Plant.find(params[:id])
   plant.destroy
-  redirect(back)
 end
 
 post '/plant-update' do
