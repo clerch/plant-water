@@ -1,4 +1,11 @@
-$(document).ready(function() {
+// $(document).ready(function() {
 
-  // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
-});
+//   $("#menu-toggle").click(function() {
+//     $("#sidebar-wrapper").addClass("active");
+//   });
+
+//   $("#menu-close").click(function() {
+//     $("#sidebar-wrapper").removeClass("active");
+//   });
+//   // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
+// });
