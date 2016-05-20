@@ -7,6 +7,11 @@ helpers do
   def current_user
     User.find_by(id: session[:user_id])
   end
+
+  def user_plants
+    Plant.where(user_id: session[:user_id])
+  end
+
 end
 
 get '/' do
@@ -18,9 +23,9 @@ get '/all-plants' do
   erb :'plants/index'
 end
 
-post '/add-plant' do
+post '/plant-add' do
   @new_plant = Plant.create(
-    user_id: current_user.id,
+    user_id: session[:user_id],
     plant_type_id: params[:plant_type_id],
     custom_name: params[:custom_name],
     last_date_watered: params[:last_date_watered],
@@ -28,13 +33,15 @@ post '/add-plant' do
     )
   #if @post validates, save
   if @new_plant.save
-    redirect(back)
+    if request.xhr?
+      json @new_plant
+    else
+      redirect(back)
+    end
   else
     #if it doesn't validate, print error messages
     erb(:"posts/new") 
   end
-
-
 end
 
 

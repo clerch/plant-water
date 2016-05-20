@@ -7,7 +7,7 @@
         <hr class="small">
         <div class="row">
           <% @user_plants.each do | plant | %>          <div class="col-md-4">
-          <div class="portfolio-item">
+          <div class="plant-card-listing portfolio-item" data-plant-id="<%= plant.id %>">
             <img class="img-portfolio img-responsive" src="<%= plant.plant_type.image_url %>">
             <h2 class="h4"><%= plant.custom_name %></h2>
             <p>Next watering date: <%= plant.next_water_date %></p>
