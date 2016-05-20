@@ -1,6 +1,8 @@
 require 'rake'
 require "sinatra/activerecord/rake"
 require ::File.expand_path('../config/environment', __FILE__)
+require './lib/users_importer'
+require './lib/plant_types_importer'
 
 Rake::Task["db:create"].clear
 Rake::Task["db:drop"].clear
@@ -26,4 +28,12 @@ end
 desc 'sends a test text to company phone'
 task "db:sms" do 
   Notification.test_sms
+end
+
+desc 'populate the database with data'
+task 'db:populate' do
+  # AppConfig.establish_connection
+  UsersImporter.new.import
+  PlantTypesImporter.new.import
+  # Invoke your TeachersImporter here
 end
