@@ -6,14 +6,13 @@
         <h1>Your Indoor Garden</h1>
         <hr class="small">
         <div class="row">
-<!--         each loop goes here -->
-          <div class="col-md-4">
+<% @user_plants.each do | plant | %>          <div class="col-md-4">
             <div class="portfolio-item">
               <img class="img-portfolio img-responsive" src="img/string-of-pearls.jpg">
               <i>Plant name</i>
             </div>
           </div>
-<!-- each loop ends here -->          
+          <% end %>    
         </div>
       </div>
     </div>

@@ -9,18 +9,35 @@ require 'phony'
 #   ).gsub(/\s+/, "")
 # end
 
+# post '/login' do
+#   @user = User.find_by(username: params[:username])
+#   if @user && params[:password] == @user.password
+#     session["user_id"] = @user.id
+#     redirect "/plants/#{@user.id}"
+#   else
+#     erb :'index'
+#   end 
+# end
+
 post '/login' do
-  @user = User.find_by(username: params[:username])
-  if @user && params[:password] == @user.password
+ @user = User.find_by(username: params[:username])
+  if @user && params[:password] == @user.password && @user.plants.size > 0
     session["user_id"] = @user.id
+    @user_plants = @user.plants
     redirect "/plants/#{@user.id}"
+  elsif @user && params[:password] == @user.password && @user.plants.size == 0
+    session["user_id"] = @user.id
+    @user_plants = @user.plants
+    redirect "/all-plants"
   else
     erb :'index'
-  end 
+  end
 end
 
-get '/plants/:id' do
-  @user_plants = Plant.where(user_id: params[:id])
+
+
+get '/plants/:user_id' do
+  @user_plants = Plant.where(user_id: session["user_id"])
   erb :'plants/show'
 end
 
@@ -41,3 +58,5 @@ post '/plant-update' do
   plant.save
   redirect(back)
 end
+
+
