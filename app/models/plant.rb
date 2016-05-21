@@ -18,8 +18,8 @@ class Plant < ActiveRecord::Base
     ((plant_type.high_water_frequency + plant_type.low_water_frequency)/2).to_i
   end
 
-  def next_water_date
-    last_date_watered.advance(days: custom_watering_frequency)
+  def calculate_next_water_date
+    self.next_water_date = last_date_watered.advance(days: custom_watering_frequency)
   end
 
   def needs_watering?
