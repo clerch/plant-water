@@ -1,4 +1,4 @@
-var $plant;
+var $plant
 
 $(document).ready(function() {
 
@@ -46,6 +46,7 @@ $(document).ready(function() {
     
 var removePlant = function(response){
     $plant.remove();
+    var plantId = $plant.data('plant-id');
     $('.plant-card-listing[data-plant-id=' + plantId + ']').fadeOut(function(){
         $(this).remove();
     });

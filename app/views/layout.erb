@@ -14,31 +14,31 @@
   <link rel="stylesheet" href="/stylesheets/bootstrap-theme.css">
   <link rel="stylesheet" href="/stylesheets/stylish-portfolio.css">
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script src="/javascript/bootstrap.min.js"></script>
-<script src="/javascript/application.js"></script>
- 
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="/javascript/bootstrap.min.js"></script>
+  <script src="/javascript/application.js"></script>
+  
 
   <title></title>
 </head>
 <body>
-<% if session["user_id"] %>
-<a id="menu-toggle" href="#" class="btn btn-dark btn-lg toggle">
-<span class="glyphicon glyphicon-leaf"></span>
-</a>
+  <% if session["user_id"] %>
+  <a id="menu-toggle" href="#" class="btn btn-dark btn-lg toggle">
+    <span class="glyphicon glyphicon-leaf"></span>
+  </a>
 
-<nav id="sidebar-wrapper">
+  <nav id="sidebar-wrapper">
     <a id="menu-close" href="#" class="btn btn-light btn-lg pull-right toggle"><span class="glyphicon glyphicon-close"></span></a>
-        <ul class="plant-list sidebar-nav">
-            <% user_plants.each do | plant | %>
-            <li class="plant-sidebar-listing" data-plant-id="<%= plant.id %>"><%= plant.custom_name %> - <%= plant.plant_type.common_name %>
-            <small><a class="remove-plant">Remove plant</a></small>
-            </li>
-            <% end %>
-        </ul>
-        <a href="/sign-out" onclick="$("#menu-close").click();">Sign Out</a>
-    </nav>
-<% end %> 
+    <ul class="plant-list sidebar-nav">
+      <% user_plants.each do | plant | %>
+      <li class="plant-sidebar-listing" data-plant-id="<%= plant.id %>"><%= plant.custom_name %> - <%= plant.plant_type.common_name %>
+        <small><a class="remove-plant">Remove plant</a></small>
+      </li>
+      <% end %>
+    </ul>
+    <a href="/sign-out" onclick="$("#menu-close").click();">Sign Out</a>
+  </nav>
+  <% end %> 
   <%= yield %>
 </body>
 </html>

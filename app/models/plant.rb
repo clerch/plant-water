@@ -5,6 +5,15 @@ class Plant < ActiveRecord::Base
   has_many :notifications
 
 
+  def self.check_watering_needs
+    plants = Plant.all.where("next_water_date <= ?", Date.today)
+    puts "found this many #{plants.length}"
+    plants.each do |plant|
+        notification = Notification.create(user_id: plant.user.id, plant_id: plant.id, message_content: "#{plant.custom_name} needs watering!")
+        notification.send_notification
+    end  
+  end 
+
   def average_water_frequency
     ((plant_type.high_water_frequency + plant_type.low_water_frequency)/2).to_i
   end
@@ -14,20 +23,7 @@ class Plant < ActiveRecord::Base
   end
 
   def needs_watering?
-    Date.today >= next_water_date
-  end
-
-  def send_notification
-    message_body = "#{custom_name} needs to be watered!"
-
-    client = Twilio::REST::Client.new(ENV['ACCOUNT_SID'], ENV['AUTH_TOKEN'])
-    text_message = client.messages.create(
-      from: ENV['COMPANY_PHONE'],
-      to: user.phone,
-      body: message_body
-    )
-    # TODO: only do the following when the twilio call works out well
-    Notification.new(user_id: user.id, message: message_body)
+    Date.today >= next_water_date    
   end
 
 end
