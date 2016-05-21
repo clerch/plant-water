@@ -34,12 +34,14 @@ delete '/plant-delete/:id' do
 end
 
 post '/plant-update' do
-  plant = Plant.find(params[:id])
-  plant.custom_name = params[:custom_name]
-  plant.custom_watering_frequency = params[:custom_watering_frequency]
-  plant.last_date_watered = params[:last_date_watered]
-  plant.next_water_date = plant.calculate_next_water_date  
-  plant.save
+  @plant = Plant.find_by(id: params[:plant_id])
+  @plant.update(
+    custom_name: params[:custom_name],
+    custom_watering_frequency: params[:custom_watering_frequency]
+    )
+  
+  @plant.calculate_next_water_date
+  @plant.save
   redirect(back)
 end
 
