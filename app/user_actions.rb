@@ -26,8 +26,7 @@ post '/login' do
   if @user && params[:password] == @user.password && @user.plants.size > 0
     session["user_id"] = @user.id
     @user_plants = @user.plants
-    redirect "/plants/"
-  
+    redirect "/plants"
   elsif @user && params[:password] == @user.password && @user.plants.size == 0
     session["user_id"] = @user.id
     @user_plants = @user.plants

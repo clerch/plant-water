@@ -1,4 +1,3 @@
-
 require_relative 'user_actions'
 
 helpers do 
@@ -27,13 +26,15 @@ post '/plant-add' do
     custom_name: params[:custom_name],
     last_date_watered: params[:last_date_watered],
     custom_watering_frequency: params[:custom_watering_frequency]
-    )
-  @new_plant.save_next_water_date
-
+  )
+    @new_plant.calculate_next_water_date
+    @new_plant.save
   #if @new_plant validates, save
   if @new_plant.save
     if request.xhr?
-      json @new_plant
+      json  :plant => {  new_plant:  @new_plant, 
+                         common_name: @new_plant.plant_type.common_name
+                      }
     else
       redirect(back)
     end
