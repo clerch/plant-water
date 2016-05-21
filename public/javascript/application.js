@@ -1,4 +1,4 @@
-var $plant
+// var $plant
 
 $(document).ready(function() {
 
@@ -31,22 +31,25 @@ $(document).ready(function() {
         });
 
     });
+
     $('.plant-list').on('click', '.remove-plant', function(e){
         e.preventDefault();
-        $plant = $(e.target).closest('.plant-sidebar-listing')
+        var $plant = $(e.target).closest('.plant-sidebar-listing')
         var plantId = $plant.data('plant-id');
+
         if(confirm('Are you sure you want to remove this plant?')){
             $.ajax({
                 type: "DELETE",
                 url: '/plant-delete/' + plantId,
-            }).done(removePlant)
+                success: removePlant,
+            // }).done(function(response){removePlant(response, $plant, plantId)})
+            }).done(removePlant.bind(this, response, $plant, plantId)})
         }
-        });
+    });
 });
-    
-var removePlant = function(response){
+
+var removePlant = function(response, $plant, plantId){
     $plant.remove();
-    var plantId = $plant.data('plant-id');
     $('.plant-card-listing[data-plant-id=' + plantId + ']').fadeOut(function(){
         $(this).remove();
     });

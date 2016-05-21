@@ -17,7 +17,7 @@
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script src="/javascript/bootstrap.min.js"></script>
   <script src="/javascript/application.js"></script>
-  
+
 
   <title></title>
 </head>
@@ -28,11 +28,13 @@
   </a>
 
   <nav id="sidebar-wrapper">
+
     <a id="menu-close" href="#" class="btn btn-light btn-lg pull-right toggle"><span class="glyphicon glyphicon-close"></span></a>
     <ul class="plant-list sidebar-nav">
+    <li class="sidebar-brand">Header</li>
       <% user_plants.each do | plant | %>
-      <li class="plant-sidebar-listing" data-plant-id="<%= plant.id %>"><%= plant.custom_name %> - <%= plant.plant_type.common_name %>
-        <small><a class="remove-plant">Remove plant</a></small>
+      <li class="plant-sidebar-listing" data-plant-id="<%= plant.id %>"><span class="glyphicon glyphicon-leaf"></span><%= plant.custom_name %> - <%= plant.plant_type.common_name %>
+      <small><a class="remove-plant"><span class="glyphicon glyphicon-remove"></span>Remove plant</a></small>
       </li>
       <% end %>
     </ul>
