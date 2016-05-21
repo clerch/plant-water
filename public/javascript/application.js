@@ -1,4 +1,4 @@
-// var $plant
+var $plant
 
 $(document).ready(function() {
 
@@ -41,9 +41,9 @@ $(document).ready(function() {
             $.ajax({
                 type: "DELETE",
                 url: '/plant-delete/' + plantId,
-                success: removePlant,
-            // }).done(function(response){removePlant(response, $plant, plantId)})
-            }).done(removePlant.bind(this, response, $plant, plantId)})
+                // success: removePlant,
+            }).done(function(response){removePlant(response, $plant, plantId)})
+            // }).done(removePlant.bind(this, response, $plant, plantId)})
         }
     });
 });
