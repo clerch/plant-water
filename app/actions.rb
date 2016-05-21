@@ -9,12 +9,11 @@ helpers do
   def user_plants
     Plant.where(user_id: session[:user_id])
   end
-
 end
 
 get '/' do
   erb :index
-end
+e
 
 get '/all-plants' do
   @plant_types = PlantType.all
@@ -22,7 +21,6 @@ get '/all-plants' do
 end
 
 post '/plant-add' do
-
   @new_plant = Plant.new(
     user_id: session[:user_id],
     plant_type_id: params[:plant_type_id],

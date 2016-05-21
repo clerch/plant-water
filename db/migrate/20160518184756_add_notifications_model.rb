@@ -1,5 +1,4 @@
-class AddNotificationsModel < ActiveRecord::Migration
-  
+class AddNotificationsModel < ActiveRecord::Migration 
   def change
     # Add code to create the table here
     # HINT: check out ActiveRecord::Migration.create_table

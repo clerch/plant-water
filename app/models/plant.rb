@@ -5,8 +5,6 @@ class Plant < ActiveRecord::Base
   has_many :notifications
 
 
-
-
   def self.check_watering_needs
     plants = Plant.all.where("next_water_date <= ?", Date.today)
     puts "found this many #{plants.length}"

@@ -2,12 +2,8 @@ require './lib/textmessage'
 
 class Notification < ActiveRecord::Base
 
-
   belongs_to :user
   belongs_to :plant
-
-
-
 
   def send_notification
     if user.communication_method == "SMS"
