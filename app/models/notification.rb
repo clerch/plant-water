@@ -11,7 +11,7 @@ class Notification < ActiveRecord::Base
       plant.last_date_watered = Date.today
       plant.save_next_water_date
       plant.save
-    elsif user.communication_method == "email"
+    elsif user.communication_method == "EMAIL"
       #insert the method to send an email.
     else 
       return false

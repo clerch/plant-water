@@ -12,7 +12,4 @@ class TextMessage
     )
   end
 
-  # def send_email
-    # email sender might be a gem
-  # end
 end
