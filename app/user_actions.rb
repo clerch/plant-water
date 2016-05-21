@@ -45,6 +45,13 @@ post '/plant-update' do
   redirect(back)
 end
 
+post '/update-last-date-watered'
+  @plant = Plant.find_by(id: params[:plant_id])
+  @plant.update(
+    last_date_watered: Date.today
+    )   
+end
+
 post '/plant-add' do
   @new_plant = Plant.new(
     user_id: session[:user_id],
