@@ -34,7 +34,9 @@ post '/plant-add' do
   #if @post validates, save
   if @new_plant.save
     if request.xhr?
-      json @new_plant
+      json  :plant => {  new_plant:  @new_plant, 
+                         common_name: @new_plant.plant_type.common_name
+                      }
     else
       redirect(back)
     end
