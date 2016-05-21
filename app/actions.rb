@@ -13,7 +13,7 @@ end
 
 get '/' do
   erb :index
-e
+end
 
 get '/all-plants' do
   @plant_types = PlantType.all
