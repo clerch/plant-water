@@ -9,7 +9,7 @@
     </div>
       <div class="col-lg-10 col-lg-offset-1 text-center">
         <!--       This heading will differ based on route add Ruby conditional here  -->   
-        <h1>Select Your Plants</h1>
+        <h1>Click to select Your plants</h1>
         <hr class="small">
         <div class="row">
 
@@ -20,12 +20,17 @@
     <div class="flipper col-sm-4">
       <div class="flip-front portfolio-item">
         <img class="front-image img-portfolio img-responsive" src="<%= plant.image_url %>">
-        </div>
+      </div>
       <div class="flip-back">
         <img class="back-image img-portfolio img-responsive" src="<%= plant.image_url %>">
-          <p class="card-back-text"><%= plant.common_name %></p>
-          <p class="card-back-text"><%= plant.scientific_name %></p>
-          <p class="card-back-text"><%= plant.description %></p>
+          <p class="card-back-text">Common name: <%= plant.common_name %>
+          <br>
+          Scientific name: <%= plant.scientific_name %>
+          <br>
+          Watering specs: You will need to water your plant every <%= plant.high_water_frequency %> to <%= plant.low_water_frequency %> days
+          <br>
+          Soil change frequency: Every <%=plant.soil_change_frequency %> days
+          </p> 
       </div>
     </div> 
 </a>
