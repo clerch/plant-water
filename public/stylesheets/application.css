@@ -9,4 +9,17 @@
 
 .plant-sidebar-listing {
   color: #57B157;
+  font-size: 12px;
+}
+
+.plant-option-buttons {
+  list-style-type: none;
+}
+
+.plant-option-buttons > li {
+  display: inline-block;
+}
+
+.plant-details {
+  text-align: left;
 }

@@ -24,19 +24,23 @@
 <body>
   <% if session["user_id"] %>
   <a id="menu-toggle" href="#" class="btn btn-dark btn-lg toggle">
-    <i class="fa fa-bars"></i>
+    <i class="fa fa-leaf"></i> Manage
   </a>
 
   <nav id="sidebar-wrapper">
 
     <a id="menu-close" href="#" class="btn btn-light btn-lg pull-right toggle"><i class="fa fa-times"></i></a>
-    <h2 class="sidebar-header">My Garden</h2>
+    <h2 class="sidebar-header">Manage Garden</h2>
     <ul class="plant-list sidebar-nav">
       <% user_plants.each do | plant | %>
       <li class="plant-sidebar-listing" data-plant-id="<%= plant.id %>"><span class="glyphicon glyphicon-leaf"></span> <%= plant.custom_name %> - <%= plant.plant_type.common_name %>
       <small><a class="remove-plant"><span class="glyphicon glyphicon-remove"></span>Remove plant</a></small>
       </li>
       <% end %>
+    </ul>
+    <ul class="sidebar-nav">
+     <li><a href="/all-plants">Add plants</a></li>
+     <li><a href="/plants">My garden</a></li>
     </ul>
     <div class="sidebar-nav-footer"><a href="/sign-out" onclick="$("#menu-close").click();">Sign Out</a></div>
   </nav>

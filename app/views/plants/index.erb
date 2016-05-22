@@ -2,6 +2,10 @@
   <div class="container">
     <div class="row">
     <div class="hidden alert alert-success alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+
     </div>
       <div class="col-lg-10 col-lg-offset-1 text-center">
         <!--       This heading will differ based on route add Ruby conditional here  -->   
@@ -13,7 +17,7 @@
   Each plant card is clickable and will open a modal to register the plant. -->
   <% @plant_types.each do | plant | %>
 <a data-toggle="modal" data-target="#addPlantModal<%=plant.id%>"> 
-    <div class="flipper col-md-4">
+    <div class="flipper col-sm-4">
       <div class="flip-front portfolio-item">
         <img class="front-image img-portfolio img-responsive" src="<%= plant.image_url %>">
         </div>
@@ -64,10 +68,3 @@
 </div>
 </div>
 
-<div class="flipper">
-
-    <div class="flip-front">ilumin</div>
-
-    <div class="flip-back">indy</div>
-
-</div>

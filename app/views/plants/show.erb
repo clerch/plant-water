@@ -1,75 +1,87 @@
 <section id="portfolio" class="portfolio">
   <div class="container">
-    <div class="row">
-      <div class="col-lg-10 col-lg-offset-1 text-center">
-        <!--       This heading will differ based on route add Ruby conditional here  -->   
-        <h1>Your Indoor Garden</h1>
-        <hr class="small">
-        <div class="row">
-          <% @user_plants.each do | plant | %>          
-            <div class="col-md-4">
-  <!-- add class "leftfloat" to the div directly below for divs to float left after deleting. 
-  Must also uncomment the ".leftfloat" in application.css
-  -->
-              <div class="plant-card-listing portfolio-item" data-plant-id="<%= plant.id %>">
-                <img class="img-portfolio img-responsive" src="<%= plant.plant_type.image_url %>">
-                <h2 class="h4"><%= plant.custom_name %></h2>
-                <p>Next watering date: <%= plant.next_water_date.to_formatted_s(:long)   %></p>
-                <a data-target="#updatePlantModal<%= plant.id %>" data-toggle="modal">Update</a>
-                <form method="post" action="/update-last-date-watered">
-                  <input type="hidden" name="plant_id" class="form-control" value="<%= plant.id %>">
-                  <button type="submit" class="btn btn-success">Mark as watered</button> 
-                </form>
-              </div>
+   <div class="hidden remove-alert alert-success alert-dismissible" role="alert">
+   </div>
+   <div class="row">
+    <div class="col-lg-10 col-lg-offset-1 text-center">
+      <!--       This heading will differ based on route add Ruby conditional here  -->   
+      <h1>Your Indoor Garden</h1>
+      <hr class="small">
+
+      <% @user_plants.each do | plant | %>          
+      <div class="row">
+        <div class="plant-card-listing" data-plant-id="<%= plant.id %>">
+          <div class="plant-image col-sm-4">
+            <div class="portfolio-item">
+              <img class="img-portfolio img-responsive" src="<%= plant.plant_type.image_url %>">
             </div>
+          </div>
 
-
-        <div class="modal fade" tabindex="-1" role="dialog" id="updatePlantModal<%=plant.id%>">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Update <%= plant.plant_type.common_name %> "<%= plant.custom_name %>"</h4>
-        </div>
-        <div class="modal-body">
-          <form method="post" action="/plant-update" class="form-horizontal">
-            <div class="form-group">
-              <input type="text" name="custom_name" class="form-control" value="<%= plant.custom_name %>">
+          <div class="plant-details col-sm-8">
+            <h2 class="h4"><%= plant.custom_name %>: <%= plant.plant_type.common_name %></h2>
+            <p>Last watered date: <%= plant.last_date_watered.to_formatted_s(:long) %></p>
+            <p>Next watering date: <%= plant.next_water_date.to_formatted_s(:long) %></p>
+            <p><%= plant.plant_type.description %></p>
+            <div class="plant-options">
+              <ul class="plant-option-buttons">
+                <li>
+                  <button class="btn btn-dark btn-md toggle" data-target="#updatePlantModal<%= plant.id %>" data-toggle="modal"><span class="fa fa-pencil"></span>Update</button>
+                </li>
+                <li>
+                  <form method="post" action="/update-last-date-watered">
+                    <input type="hidden" name="plant_id" class="form-control" value="<%= plant.id %>">
+                    <button type="submit" class="btn btn-dark btn-md toggle"><span class="fa fa-tint"></span> Mark as watered</button> 
+                  </form>
+                </li>
+                <li><button class="remove-plant btn btn-dark btn-md toggle"><span class="fa fa-remove"></span> Remove</button></li>
+              </ul>
             </div>
-            <div class="form-group">
-              <label class="radio-inline">
-                <input type="radio" name="custom_watering_frequency" value="<%= plant.plant_type.low_water_frequency %>" <% if plant.custom_watering_frequency == plant.plant_type.low_water_frequency %>checked<% end %> >Low Sunlight</label>
-              
-              <label class="radio-inline">
-                <input type="radio" name="custom_watering_frequency" value="<%= (plant.plant_type.low_water_frequency + plant.plant_type.high_water_frequency) / 2 %>" <% if plant.custom_watering_frequency == (plant.plant_type.low_water_frequency + plant.plant_type.high_water_frequency) / 2 %>checked<% end %>>Some Sunlight</label>
-              
-              <label class="radio-inline">
-              <input type="radio" name="custom_watering_frequency" value="<%= plant.plant_type.high_water_frequency %>" <% if plant.custom_watering_frequency == plant.plant_type.high_water_frequency %>checked<% end %>>Lots of Sunlight</label>
-            </div>
-            <div class="form-group">
-              <input type="hidden" name="plant_id" class="form-control" value="<%= plant.id %>">
-            </div> 
-            <div class="modal-footer">
-            <button type="submit" class="btn btn-success">Save changes</button>
-            </div>
-          </form>
-        </div>
-
-      </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-  </div><!-- /.modal -->
-
-
-
-
-
-
-
-          <% end %>    
+          </div>
         </div>
       </div>
-    </div>
-  </div>
+
+<div class="modal fade" tabindex="-1" role="dialog" id="updatePlantModal<%=plant.id%>">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Update <%= plant.plant_type.common_name %> "<%= plant.custom_name %>"</h4>
+      </div>
+      <div class="modal-body">
+        <form method="post" action="/plant-update" class="form-horizontal">
+          <div class="form-group">
+            <input type="text" name="custom_name" class="form-control" value="<%= plant.custom_name %>">
+          
+          <select name="custom_watering_frequency" class="selectpicker">
+            <option value="<%= plant.plant_type.low_water_frequency %>" <% if plant.custom_watering_frequency == plant.plant_type.low_water_frequency %> selected <% end %> >Low Sunlight</option>
+            <option value="<%= (plant.plant_type.low_water_frequency + plant.plant_type.high_water_frequency) / 2 %>" <% if plant.custom_watering_frequency == (plant.plant_type.low_water_frequency + plant.plant_type.high_water_frequency) / 2 %> selected <% end %>>Some Sunlight</option>
+            <option value="<%= plant.plant_type.high_water_frequency %>" <% if plant.custom_watering_frequency == plant.plant_type.high_water_frequency %> selected <% end %>>Lots of Sunlight</option>
+          </select>
+          
+            <input type="hidden" name="plant_id" class="form-control" value="<%= plant.id %>">
+          
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-success">Save changes</button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+
+
+
+
+
+<% end %>    
+</div>
+</div>
+</div>
+</div>
 
 
 

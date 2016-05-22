@@ -28,10 +28,17 @@ get '/plants' do
   erb :'plants/show'
 end
 
+# post '/plant-delete' do
+#   @plant = Plant.find_by(id: params[:plant_id])
+#   @plant.destroy
+#   erb :'plants/show'
+# end
+
 delete '/plant-delete/:id' do
-  plant = Plant.find(params[:id])
-  plant.destroy
+  @plant = Plant.find(params[:id])
+  @plant.destroy
 end
+
 
 post '/plant-update' do
   @plant = Plant.find_by(id: params[:plant_id])
@@ -42,7 +49,7 @@ post '/plant-update' do
   
   @plant.calculate_next_water_date
   @plant.save
-  redirect(back)
+  redirect '/plants'
 end
 
 post '/update-last-date-watered' do 
@@ -50,7 +57,9 @@ post '/update-last-date-watered' do
   @plant.update(
     last_date_watered: Date.today
     )   
-  redirect(back)
+  @plant.calculate_next_water_date
+  @plant.save
+  redirect '/plants'
 end
 
 post '/plant-add' do
