@@ -38,10 +38,10 @@
             </div>
             <div class="form-group">
               <label class="radio-inline">
-                <input type="radio" name="custom_watering_frequency" value="<%= plant.plant_type.low_water_frequency %>" <% if plant.custom_watering_frequency == plant.plant_type.low_water_frequency %>checked = "checked"<% end %> >Low Sunlight</label>
+                <input type="radio" name="custom_watering_frequency" value="<%= plant.plant_type.low_water_frequency %>" <% if plant.custom_watering_frequency == plant.plant_type.low_water_frequency %>checked<% end %> >Low Sunlight</label>
               
               <label class="radio-inline">
-                <input type="radio" name="custom_watering_frequency" value="<%= (plant.plant_type.low_water_frequency + plant.plant_type.high_water_frequency) / 2 %>" <% if plant.custom_watering_frequency == (plant.plant_type.low_water_frequency + plant.plant_type.high_water_frequency) / 2 %>checked = "checked"<% end %> >Some Sunlight</label>
+                <input type="radio" name="custom_watering_frequency" value="<%= (plant.plant_type.low_water_frequency + plant.plant_type.high_water_frequency) / 2 %>" <% if plant.custom_watering_frequency == (plant.plant_type.low_water_frequency + plant.plant_type.high_water_frequency) / 2 %>checked<% end %>>Some Sunlight</label>
               
               <label class="radio-inline">
               <input type="radio" name="custom_watering_frequency" value="<%= plant.plant_type.high_water_frequency %>" <% if plant.custom_watering_frequency == plant.plant_type.high_water_frequency %>checked<% end %>>Lots of Sunlight</label>
