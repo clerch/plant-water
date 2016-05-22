@@ -112,6 +112,12 @@ hr.small {
     text-decoration: none;
 }
 
+.sidebar-header {
+    font-size: 18px;
+    margin-left: 20px;
+    color: #999;
+}
+
 .sidebar-nav-footer {
     vertical-align: bottom;
     position: absolute;
