@@ -2,7 +2,6 @@ var $plant
 
 $(document).ready(function() {
 
-
     var $plantList = $('.plant-list');
 
     $("#menu-toggle").click(function() {
@@ -55,6 +54,3 @@ var removePlant = function(response, $plant, plantId){
         $(this).remove();
     });
 }
-
-    
-

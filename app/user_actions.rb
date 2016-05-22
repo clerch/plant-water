@@ -45,11 +45,12 @@ post '/plant-update' do
   redirect(back)
 end
 
-post '/update-last-date-watered'
+post '/update-last-date-watered' do
   @plant = Plant.find_by(id: params[:plant_id])
   @plant.update(
     last_date_watered: Date.today
-    )   
+    )
+  redirect(back)
 end
 
 post '/plant-add' do

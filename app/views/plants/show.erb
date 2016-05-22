@@ -14,7 +14,7 @@
               <div class="plant-card-listing portfolio-item" data-plant-id="<%= plant.id %>">
                 <img class="img-portfolio img-responsive" src="<%= plant.plant_type.image_url %>">
                 <h2 class="h4"><%= plant.custom_name %></h2>
-                <p>Next watering date: <%= plant.next_water_date %></p>
+                <p>Next watering date: <%= plant.next_water_date.to_formatted_s(:long)   %></p>
                 <a data-target="#updatePlantModal<%= plant.id %>" data-toggle="modal">Update</a>
                 <form method="post" action="/update-last-date-watered">
                   <input type="hidden" name="plant_id" class="form-control" value="<%= plant.id %>">

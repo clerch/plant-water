@@ -24,7 +24,7 @@
 <body>
   <% if session["user_id"] %>
   <a id="menu-toggle" href="#" class="btn btn-dark btn-lg toggle">
-    <span class="glyphicon glyphicon-leaf"></span>
+    <span class="glyphicon glyphicon-menu-hamburger"></span>
   </a>
 
   <nav id="sidebar-wrapper">
@@ -33,12 +33,12 @@
     <ul class="plant-list sidebar-nav">
     <li class="sidebar-brand">Header</li>
       <% user_plants.each do | plant | %>
-      <li class="plant-sidebar-listing" data-plant-id="<%= plant.id %>"><span class="glyphicon glyphicon-leaf"></span><%= plant.custom_name %> - <%= plant.plant_type.common_name %>
+      <li class="plant-sidebar-listing" data-plant-id="<%= plant.id %>"><span class="glyphicon glyphicon-leaf"></span> <%= plant.custom_name %> - <%= plant.plant_type.common_name %>
       <small><a class="remove-plant"><span class="glyphicon glyphicon-remove"></span>Remove plant</a></small>
       </li>
       <% end %>
     </ul>
-    <a href="/sign-out" onclick="$("#menu-close").click();">Sign Out</a>
+    <div class="sidebar-nav-footer"><a href="/sign-out" onclick="$("#menu-close").click();">Sign Out</a></div>
   </nav>
   <% end %> 
   <%= yield %>

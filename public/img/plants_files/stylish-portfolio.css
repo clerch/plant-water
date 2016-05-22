@@ -114,10 +114,6 @@ hr.small {
 
 .sidebar-nav-footer {
     vertical-align: bottom;
-    position: absolute;
-    bottom: 20px;
-    left: 175px;
-    font-color: white;
 }
 
 .sidebar-nav > .sidebar-brand {
@@ -244,63 +240,4 @@ hr.small {
 
 footer {
     padding: 100px 0;
-}
-
-
-
-/** style */
-.flipper { text-align: center; margin: 0 auto; }
-.flip-back { background: #222; color: #666; }
-
-/** layout & transform */
-.flipper {
-    position: relative;
-    -webkit-perspective: 700;
-    overflow: visible;
-}
-.flip-front {
-    -webkit-transform-style: preserve- 3 d;
-    -webkit-backface-visibility: hidden;
-    -webkit-transition: all ease-in-out 0.4s;
-    z-index: 900;
-}
-.flip-back {
-    position: absolute; top: 0; left: 0;
-    z-index: 800;
-    
-    -webkit-transform: rotatex(-180deg);
-    -webkit-transform-style: preserve- 3 d;
-    -webkit-backface-visibility: hidden;
-    -webkit-transition: all ease-in-out 0.4s;
-    opacity: 0;
-}
-.flipper:hover .flip-front {
-    z-index: 900;
-    -webkit-transform: rotatex(180deg);
-    opacity: 0;
-}
-.flipper:hover .flip-back {
-    z-index: 1000;
-    -webkit-transform: rotatex(0deg);
-    opacity: 1;
-}
-
-.back-image {
-    visibility: hidden;
-    position: relative;
-    width: 100%;
-}
-
-.front-image {
-    position: relative;
-    width: 100%;
-}
-
-
-.card-back-text {
-    position: absolute;
-    top: 50px;
-    left: 50px;
-    text-align: center;
-    bottom: -10px;
 }

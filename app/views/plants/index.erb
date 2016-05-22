@@ -12,14 +12,19 @@
 <!-- Looping over each plant in the database and outputting the plant card
   Each plant card is clickable and will open a modal to register the plant. -->
   <% @plant_types.each do | plant | %>
-  <a data-toggle="modal" data-target="#addPlantModal<%=plant.id%>">
-    <div class="col-md-4">
-      <div class="portfolio-item">
-        <img class="img-portfolio img-responsive" src="<%= plant.image_url %>">
-        <i><%= plant.common_name %></i>
+<a data-toggle="modal" data-target="#addPlantModal<%=plant.id%>"> 
+    <div class="flipper col-md-4">
+      <div class="flip-front portfolio-item">
+        <img class="front-image img-portfolio img-responsive" src="<%= plant.image_url %>">
+        </div>
+      <div class="flip-back">
+        <img class="back-image img-portfolio img-responsive" src="<%= plant.image_url %>">
+          <p class="card-back-text"><%= plant.common_name %></p>
+          <p class="card-back-text"><%= plant.scientific_name %></p>
+          <p class="card-back-text"><%= plant.description %></p>
       </div>
-    </div>
-  </a>
+    </div> 
+</a>
   <div class="modal fade" tabindex="-1" role="dialog" id="addPlantModal<%=plant.id%>">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -57,4 +62,12 @@
 </div>
 </div>
 </div>
+</div>
+
+<div class="flipper">
+
+    <div class="flip-front">ilumin</div>
+
+    <div class="flip-back">indy</div>
+
 </div>

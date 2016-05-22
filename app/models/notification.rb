@@ -9,7 +9,7 @@ class Notification < ActiveRecord::Base
     if user.communication_method == "SMS"
       TextMessage.new.send_message(self)
       plant.last_date_watered = Date.today
-      plant.save_next_water_date
+      plant.calculate_next_water_date
       plant.save
     elsif user.communication_method == "EMAIL"
       #insert the method to send an email.

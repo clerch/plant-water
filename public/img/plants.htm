@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<!-- saved from url=(0029)http://localhost:3000/plants# -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <!--
+    normalize.css removes cross-browser differences in defaults, e.g.,
+    differences in how form elements appear between Firefox and IE
+    See: http://necolas.github.com/normalize.css/
+  -->
+  <!--
+    application.css is where you put your styles
+  -->
+  <link rel="stylesheet" href="./plants_files/application.css">
+  <link rel="stylesheet" href="./plants_files/bootstrap.css">
+  <link rel="stylesheet" href="./plants_files/bootstrap-theme.css">
+  <link rel="stylesheet" href="./plants_files/stylish-portfolio.css">
+
+  <script src="./plants_files/jquery.min.js"></script><style type="text/css"></style>
+  <script src="./plants_files/bootstrap.min.js"></script>
+  <script src="./plants_files/application.js"></script>
+
+
+  <title></title>
+</head>
+<body>
+  
+  <a id="menu-toggle" href="http://localhost:3000/plants#" class="btn btn-dark btn-lg toggle">
+    <span class="glyphicon glyphicon-menu-hamburger"></span>
+  </a>
+
+  <nav id="sidebar-wrapper">
+
+    <a id="menu-close" href="http://localhost:3000/plants#" class="btn btn-light btn-lg pull-right toggle"><span class="glyphicon glyphicon-close"></span></a>
+    <ul class="plant-list sidebar-nav">
+    <li class="sidebar-brand">Header</li>
+      
+      <li class="plant-sidebar-listing" data-plant-id="5"><span class="glyphicon glyphicon-leaf"></span>Monty - Monstera
+      <small><a class="remove-plant"><span class="glyphicon glyphicon-remove"></span>Remove plant</a></small>
+      </li>
+      
+      <li class="plant-sidebar-listing" data-plant-id="6"><span class="glyphicon glyphicon-leaf"></span>Sandwich - Monstera
+      <small><a class="remove-plant"><span class="glyphicon glyphicon-remove"></span>Remove plant</a></small>
+      </li>
+      
+      <li class="plant-sidebar-listing" data-plant-id="8"><span class="glyphicon glyphicon-leaf"></span>Leo - Leopard Lily
+      <small><a class="remove-plant"><span class="glyphicon glyphicon-remove"></span>Remove plant</a></small>
+      </li>
+      
+      <li class="plant-sidebar-listing" data-plant-id="9"><span class="glyphicon glyphicon-leaf"></span>Cobra Kai - Snake Plant
+      <small><a class="remove-plant"><span class="glyphicon glyphicon-remove"></span>Remove plant</a></small>
+      </li>
+      
+    </ul>
+    <div class="sidebar-nav-footer"><a href="http://localhost:3000/sign-out" onclick="$(" #menu-close").click();"="">Sign Out</a></div>
+  </nav>
+   
+  <section id="portfolio" class="portfolio">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-10 col-lg-offset-1 text-center">
+        <!--       This heading will differ based on route add Ruby conditional here  -->   
+        <h1>Your Indoor Garden</h1>
+        <hr class="small">
+        <div class="row">
+                    
+            <div class="col-md-4">
+  <!-- add class "leftfloat" to the div directly below for divs to float left after deleting. 
+  Must also uncomment the ".leftfloat" in application.css
+  -->
+              <div class="plant-card-listing portfolio-item" data-plant-id="8">
+                <img class="img-portfolio img-responsive" src="./plants_files/dumb-cane.jpg">
+                <h2 class="h4">Leo</h2>
+                <p>Next watering date: May 22, 2016 00:00</p>
+                <a data-target="#updatePlantModal8" data-toggle="modal">Update</a>
+                <form method="post" action="http://localhost:3000/update-last-date-watered">
+                  <input type="hidden" name="plant_id" class="form-control" value="8">
+                  <button type="submit" class="btn btn-success">Mark as watered</button> 
+                </form>
+              </div>
+            </div>
+
+
+        <div class="modal fade" tabindex="-1" role="dialog" id="updatePlantModal8">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+          <h4 class="modal-title"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Update Leopard Lily "Leo"</h4>
+        </div>
+        <div class="modal-body">
+          <form method="post" action="http://localhost:3000/plant-update" class="form-horizontal">
+            <div class="form-group">
+              <input type="text" name="custom_name" class="form-control" value="Leo">
+            </div>
+            <div class="form-group">
+              <label class="radio-inline">
+                <input type="radio" name="custom_watering_frequency" value="1" checked="checked">Low Sunlight</label>
+              
+              <label class="radio-inline">
+                <input type="radio" name="custom_watering_frequency" value="1" checked="checked">Some Sunlight</label>
+              
+              <label class="radio-inline">
+              <input type="radio"  name="custom_watering_frequency" value="1" checked="">Lots of Sunlight</label>
+            </div>
+            <div class="form-group">
+              <input type="hidden" name="plant_id" class="form-control" value="8">
+            </div> 
+            <div class="modal-footer">
+            <button type="submit" class="btn btn-success">Save changes</button>
+            </div>
+          </form>
+        </div>
+
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
+
+
+
+
+
+
+                    
+            <div class="col-md-4">
+  <!-- add class "leftfloat" to the div directly below for divs to float left after deleting. 
+  Must also uncomment the ".leftfloat" in application.css
+  -->
+              <div class="plant-card-listing portfolio-item" data-plant-id="5">
+                <img class="img-portfolio img-responsive" src="./plants_files/monstera.jpg">
+                <h2 class="h4">Monty</h2>
+                <p>Next watering date: May 26, 2016 00:00</p>
+                <a data-target="#updatePlantModal5" data-toggle="modal">Update</a>
+                <form method="post" action="http://localhost:3000/update-last-date-watered">
+                  <input type="hidden" name="plant_id" class="form-control" value="5">
+                  <button type="submit" class="btn btn-success">Mark as watered</button> 
+                </form>
+              </div>
+            </div>
+
+
+        <div class="modal fade" tabindex="-1" role="dialog" id="updatePlantModal5">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+          <h4 class="modal-title"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Update Monstera "Monty"</h4>
+        </div>
+        <div class="modal-body">
+          <form method="post" action="http://localhost:3000/plant-update" class="form-horizontal">
+            <div class="form-group">
+              <input type="text" name="custom_name" class="form-control" value="Monty">
+            </div>
+            <div class="form-group">
+              <label class="radio-inline">
+                <input type="radio" name="custom_watering_frequency" value="10">Low Sunlight</label>
+              
+              <label class="radio-inline">
+                <input type="radio" name="custom_watering_frequency" value="8">Some Sunlight</label>
+              
+              <label class="radio-inline">
+              <input type="radio"  name="custom_watering_frequency" value="6" checked="">Lots of Sunlight</label>
+            </div>
+            <div class="form-group">
+              <input type="hidden" name="plant_id" class="form-control" value="5">
+            </div> 
+            <div class="modal-footer">
+            <button type="submit" class="btn btn-success">Save changes</button>
+            </div>
+          </form>
+        </div>
+
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
+
+
+
+
+
+
+                    
+            <div class="col-md-4">
+  <!-- add class "leftfloat" to the div directly below for divs to float left after deleting. 
+  Must also uncomment the ".leftfloat" in application.css
+  -->
+              <div class="plant-card-listing portfolio-item" data-plant-id="6">
+                <img class="img-portfolio img-responsive" src="./plants_files/monstera.jpg">
+                <h2 class="h4">Sandwich</h2>
+                <p>Next watering date: May 26, 2016 00:00</p>
+                <a data-target="#updatePlantModal6" data-toggle="modal">Update</a>
+                <form method="post" action="http://localhost:3000/update-last-date-watered">
+                  <input type="hidden" name="plant_id" class="form-control" value="6">
+                  <button type="submit" class="btn btn-success">Mark as watered</button> 
+                </form>
+              </div>
+            </div>
+
+
+        <div class="modal fade" tabindex="-1" role="dialog" id="updatePlantModal6">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+          <h4 class="modal-title"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Update Monstera "Sandwich"</h4>
+        </div>
+        <div class="modal-body">
+          <form method="post" action="http://localhost:3000/plant-update" class="form-horizontal">
+            <div class="form-group">
+              <input type="text" name="custom_name" class="form-control" value="Sandwich">
+            </div>
+            <div class="form-group">
+              <label class="radio-inline">
+                <input type="radio" name="custom_watering_frequency" value="10">Low Sunlight</label>
+              
+              <label class="radio-inline">
+                <input type="radio" name="custom_watering_frequency" value="8" checked="checked">Some Sunlight</label>
+              
+              <label class="radio-inline">
+              <input type="radio"  name="custom_watering_frequency" value="6">Lots of Sunlight</label>
+            </div>
+            <div class="form-group">
+              <input type="hidden" name="plant_id" class="form-control" value="6">
+            </div> 
+            <div class="modal-footer">
+            <button type="submit" class="btn btn-success">Save changes</button>
+            </div>
+          </form>
+        </div>
+
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
+
+
+
+
+
+
+                    
+            <div class="col-md-4">
+  <!-- add class "leftfloat" to the div directly below for divs to float left after deleting. 
+  Must also uncomment the ".leftfloat" in application.css
+  -->
+              <div class="plant-card-listing portfolio-item" data-plant-id="9">
+                <img class="img-portfolio img-responsive" src="./plants_files/snake-plant.jpg">
+                <h2 class="h4">Cobra Kai</h2>
+                <p>Next watering date: June 16, 2016 00:00</p>
+                <a data-target="#updatePlantModal9" data-toggle="modal">Update</a>
+                <form method="post" action="http://localhost:3000/update-last-date-watered">
+                  <input type="hidden" name="plant_id" class="form-control" value="9">
+                  <button type="submit" class="btn btn-success">Mark as watered</button> 
+                </form>
+              </div>
+            </div>
+
+
+        <div class="modal fade" tabindex="-1" role="dialog" id="updatePlantModal9">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+          <h4 class="modal-title"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Update Snake Plant "Cobra Kai"</h4>
+        </div>
+        <div class="modal-body">
+          <form method="post" action="http://localhost:3000/plant-update" class="form-horizontal">
+            <div class="form-group">
+              <input type="text" name="custom_name" class="form-control" value="Cobra Kai">
+            </div>
+            <div class="form-group">
+              <label class="radio-inline">
+                <input type="radio" name="custom_watering_frequency" value="28" checked="checked">Low Sunlight</label>
+              
+              <label class="radio-inline">
+                <input type="radio" name="custom_watering_frequency" value="21">Some Sunlight</label>
+              
+              <label class="radio-inline">
+              <input type="radio"  name="custom_watering_frequency" value="14">Lots of Sunlight</label>
+            </div>
+            <div class="form-group">
+              <input type="hidden" name="plant_id" class="form-control" value="9">
+            </div> 
+            <div class="modal-footer">
+            <button type="submit" class="btn btn-success">Save changes</button>
+            </div>
+          </form>
+        </div>
+
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
+
+
+
+
+
+
+              
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+</section></body></html>
