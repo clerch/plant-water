@@ -16,7 +16,6 @@
               <img class="img-portfolio img-responsive" src="<%= plant.plant_type.image_url %>">
             </div>
           </div>
-
           <div class="plant-details col-sm-8">
             <h2 class="h3"><%= plant.custom_name %>: <%= plant.plant_type.common_name %></h2>
             <p>Last watered: <%= plant.last_date_watered.to_formatted_s(:long) %> </p> <p>Next watering notification: <%= plant.next_water_date.to_formatted_s(:long) %></p>
@@ -26,23 +25,22 @@
             <div class="plant-options">
               <ul class="plant-option-buttons">
                 <li>
-                  <button class="btn btn-dark btn-md toggle" data-target="#updatePlantModal<%= plant.id %>" data-toggle="modal"><span class="fa fa-pencil"></span>Update</button>
+                  <button class="btn btn-dark btn-md toggle" data-target="#updatePlantModal<%= plant.id %>" data-toggle="modal"><span class="fa fa-pencil"></span>&nbsp;Update</button>
                 </li>
                 <li>
                   <form method="post" action="/update-last-date-watered">
                     <input type="hidden" name="plant_id" class="form-control" value="<%= plant.id %>">
-                    <button type="submit" class="btn btn-dark btn-md toggle"><span class="fa fa-tint"></span> Mark as watered</button> 
+                    <button type="submit" class="btn btn-dark btn-md toggle"><span class="fa fa-tint"></span>&nbsp;Mark as watered</button> 
                   </form>
                 </li>
-                <li><button class="remove-plant btn btn-dark btn-md toggle"><span class="fa fa-remove"></span> Remove</button></li>
+                <li><button class="remove-plant btn btn-dark btn-md toggle"><span class="fa fa-remove"></span>&nbsp;Remove</button></li>
               </ul>
             </div>
           </div>
         </div>
       </div>
-
+    </div>
   </div>
-</div>
    
 
 <div class="modal fade" tabindex="-1" role="dialog" id="updatePlantModal<%=plant.id%>">
@@ -50,7 +48,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Update <%= plant.plant_type.common_name %> "<%= plant.custom_name %>"</h4>
+        <h4 class="modal-title"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>&nbsp;Update <%= plant.plant_type.common_name %> "<%= plant.custom_name %>"</h4>
       </div>
       <div class="modal-body">
         <form method="post" action="/plant-update" class="form-horizontal">

@@ -25,7 +25,7 @@
 <body>
   <% if session["user_id"] %>
   <a id="menu-toggle" href="#" class="btn btn-dark btn-lg toggle">
-    <i class="fa fa-leaf"></i> Manage
+    <i class="fa fa-leaf"></i>&nbsp;Manage
   </a>
 
   <nav id="sidebar-wrapper">
@@ -34,16 +34,16 @@
     <h2 class="sidebar-header">Current plants</h2>
     <ul class="plant-list sidebar-nav">
       <% user_plants.each do | plant | %>
-      <li class="plant plant-sidebar-listing" data-plant-id="<%= plant.id %>"><span class="glyphicon glyphicon-leaf"></span> <%= plant.custom_name %> - <%= plant.plant_type.common_name %>
-      <small><a class="remove-plant"><span class="glyphicon glyphicon-remove"></span>Remove plant</a></small>
+      <li class="plant plant-sidebar-listing" data-plant-id="<%= plant.id %>"><span class="glyphicon glyphicon-leaf"></span>&nbsp;<%= plant.custom_name %>&nbsp;-&nbsp;<%= plant.plant_type.common_name %>
+      <small><a class="remove-plant"><span class="glyphicon glyphicon-remove"></span>&nbsp;Remove plant</a></small>
       </li>
       <% end %>
     </ul>
     <ul class="sidebar-nav">
-     <li><a href="/all-plants"><i class="fa fa-plus"></i> Add plants</a></li>
-     <li><a href="/plants"><i class="fa fa-eye"></i> View garden details</a></li>
+     <li><a href="/all-plants"><i class="fa fa-plus"></i>&nbsp;Add plants</a></li>
+     <li><a href="/plants"><i class="fa fa-eye"></i>&nbsp;View garden details</a></li>
     </ul>
-    <div class="sidebar-nav-footer"><a href="/sign-out" onclick="$("#menu-close").click();">Sign Out</a></div>
+    <div class="sidebar-nav-footer"><a href="/sign-out" onclick="$("#menu-close").click();"><span class="fa fa-power-off"></span>&nbsp;Sign Out</a></div>
   </nav>
   <% end %> 
   <%= yield %>

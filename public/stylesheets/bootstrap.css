@@ -1098,13 +1098,13 @@ textarea {
   line-height: inherit;
 }
 a {
-  color: #337ab7;
+  color: #999999;
   text-decoration: none;
 }
 a:hover,
 a:focus {
-  color: #23527c;
-  text-decoration: underline;
+  color: #57B157;
+  text-decoration: none;
 }
 a:focus {
   outline: thin dotted;
@@ -2632,7 +2632,8 @@ input[type="search"] {
   }
 }
 .form-group {
-  margin-bottom: 15px;
+    margin-bottom: 15px;
+    max-width: 85%;
 }
 .radio,
 .checkbox {
@@ -2978,8 +2979,8 @@ select[multiple].input-lg {
   min-height: 27px;
 }
 .form-horizontal .form-group {
-  margin-right: -15px;
-  margin-left: -15px;
+    margin-right: -15px;
+    margin-left: 35px;
 }
 @media (min-width: 768px) {
   .form-horizontal .control-label {

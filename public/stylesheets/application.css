@@ -23,6 +23,11 @@
 .plant-details {
   text-align: left;
 }
+
+.plant-options {
+    margin-left: -40px;
+}
+
 .subhead {
   font-family: "Karla";
 }
@@ -34,4 +39,8 @@
     -webkit-box-shadow: 0 8px 6px -6px black;
     -moz-box-shadow: 0 8px 6px -6px black;
     box-shadow: 0 8px 6px -6px #A2A2A2;
+}
+
+.sidebar-nav-footer a {
+    font-color: #999
 }

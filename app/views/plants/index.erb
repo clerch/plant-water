@@ -30,7 +30,7 @@
           <br>
           <em><%= plant.scientific_name %></em>
           <br>
-          <small>Receive watering notifications every <%= plant.high_water_frequency %> to <%= plant.low_water_frequency %> days</small>
+          <small>Get watering notifications every <%= plant.high_water_frequency %> to <%= plant.low_water_frequency %> days</small>
           <br>
           <br>
           <button class="btn btn-light btn-md" data-toggle="modal" data-target="#addPlantModal<%=plant.id%>">Add</button>
@@ -47,12 +47,15 @@
         <div class="modal-body">
           <form method="post" action="/plant-add" class="add-plant form-horizontal">
             <div class="form-group">
-              <input type="text" name="custom_name" class="form-control" placeholder="Give your plant a unique name (eg: Kitchen <%= plant.common_name %>">
+            <h5>Give your a name</h5>
+              <input type="text" name="custom_name" class="form-control" placeholder="Perhaps a location in your home or a unique name?">
             </div>
             <div class="form-group">
+            <h5>When did you last water your plant?</h5>
               <input type="date" value="<%= Date.today %>" name="last_date_watered" class="form-control" placeholder="When did you last water your <%= plant.common_name %>?">
             </div>
             <div class="form-group">
+            <h5>In your home, how much sunlight is your plant exposed to?</h5>
               <label class="radio-inline"><input type="radio" value="<%= plant.low_water_frequency %>" name="custom_watering_frequency">Low Sunlight</label>
               <label class="radio-inline"><input type="radio" value="<%= (plant.low_water_frequency + plant.high_water_frequency) / 2 %>" name="custom_watering_frequency">Some Sunlight</label>
               <label class="radio-inline"><input type="radio" value="<%= plant.high_water_frequency %>" name="custom_watering_frequency">Lots of Sunlight</label>
