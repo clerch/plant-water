@@ -10,7 +10,9 @@
 
       <% @user_plants.each do | plant | %>          
       <div class="row">
-        <div class="plant-card-listing" data-plant-id="<%= plant.id %>">
+      <div class="garden-listing panel panel-default" data-plant-id="<%= plant.id %>">
+  <div class="panel-body">
+        <div class="plant-card-listing">
           <div class="plant-image col-sm-4">
             <div class="portfolio-item">
               <img class="img-portfolio img-responsive" src="<%= plant.plant_type.image_url %>">
@@ -18,10 +20,11 @@
           </div>
 
           <div class="plant-details col-sm-8">
-            <h2 class="h4"><%= plant.custom_name %>: <%= plant.plant_type.common_name %></h2>
-            <p>Last watered date: <%= plant.last_date_watered.to_formatted_s(:long) %></p>
-            <p>Next watering date: <%= plant.next_water_date.to_formatted_s(:long) %></p>
-            <p><%= plant.plant_type.description %></p>
+            <h2 class="h3"><%= plant.custom_name %>: <%= plant.plant_type.common_name %></h2>
+            <p>Last watered: <%= plant.last_date_watered.to_formatted_s(:long) %> | Next watering notification: <%= plant.next_water_date.to_formatted_s(:long) %></p>
+            <p><i class="fa fa-info-circle"></i> <%= plant.plant_type.watering_requirements %></p>
+            <p>Change soil every <%=plant.plant_type.soil_change_frequency %> days</p>
+            <p>Fertilize every <%=plant.plant_type.fertilizer_frequency %> days</p>
             <div class="plant-options">
               <ul class="plant-option-buttons">
                 <li>
@@ -39,6 +42,10 @@
           </div>
         </div>
       </div>
+
+  </div>
+</div>
+   
 
 <div class="modal fade" tabindex="-1" role="dialog" id="updatePlantModal<%=plant.id%>">
   <div class="modal-dialog">

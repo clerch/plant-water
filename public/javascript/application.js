@@ -51,10 +51,10 @@ $(document).ready(function() {
 
 var removePlant = function(response, $plant, plantId){
     $plant.remove();
-    $('.plant-card-listing[data-plant-id=' + plantId + ']').fadeOut(function(){
+    $('.garden-listing[data-plant-id=' + plantId + ']').fadeOut(function(){
         $(this).remove();
         var plant = response.plant;
-        $(".remove-alert").removeClass("hidden");
+        
     });
 }
 

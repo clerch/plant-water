@@ -9,31 +9,34 @@
     </div>
       <div class="col-lg-10 col-lg-offset-1 text-center">
         <!--       This heading will differ based on route add Ruby conditional here  -->   
-        <h1>Click to select Your plants</h1>
+        <h1>Add plants to your garden</h1>
         <hr class="small">
         <div class="row">
 
 <!-- Looping over each plant in the database and outputting the plant card
   Each plant card is clickable and will open a modal to register the plant. -->
   <% @plant_types.each do | plant | %>
-<a data-toggle="modal" data-target="#addPlantModal<%=plant.id%>"> 
+
     <div class="flipper col-sm-4">
       <div class="flip-front portfolio-item">
         <img class="front-image img-portfolio img-responsive" src="<%= plant.image_url %>">
       </div>
       <div class="flip-back">
         <img class="back-image img-portfolio img-responsive" src="<%= plant.image_url %>">
-          <p class="card-back-text">Common name: <%= plant.common_name %>
+          
+
+          <p class="card-back-text">
+          <strong><%= plant.common_name %></strong>
           <br>
-          Scientific name: <%= plant.scientific_name %>
+          <em><%= plant.scientific_name %></em>
           <br>
-          Watering specs: You will need to water your plant every <%= plant.high_water_frequency %> to <%= plant.low_water_frequency %> days
+          <small>Receive watering notifications every <%= plant.high_water_frequency %> to <%= plant.low_water_frequency %> days</small>
           <br>
-          Soil change frequency: Every <%=plant.soil_change_frequency %> days
+          <br>
+          <button class="btn btn-light btn-md" data-toggle="modal" data-target="#addPlantModal<%=plant.id%>">Add</button>
           </p> 
       </div>
     </div> 
-</a>
   <div class="modal fade" tabindex="-1" role="dialog" id="addPlantModal<%=plant.id%>">
     <div class="modal-dialog">
       <div class="modal-content">
