@@ -20,7 +20,7 @@
   <script src="/javascript/application.js"></script>
 
 
-  <title></title>
+  <title>Greenhouse</title>
 </head>
 <body>
   <% if session["user_id"] %>
@@ -34,14 +34,14 @@
     <h2 class="sidebar-header">Current plants</h2>
     <ul class="plant-list sidebar-nav">
       <% user_plants.each do | plant | %>
-      <li class="plant-sidebar-listing" data-plant-id="<%= plant.id %>"><span class="glyphicon glyphicon-leaf"></span> <%= plant.custom_name %> - <%= plant.plant_type.common_name %>
+      <li class="plant plant-sidebar-listing" data-plant-id="<%= plant.id %>"><span class="glyphicon glyphicon-leaf"></span> <%= plant.custom_name %> - <%= plant.plant_type.common_name %>
       <small><a class="remove-plant"><span class="glyphicon glyphicon-remove"></span>Remove plant</a></small>
       </li>
       <% end %>
     </ul>
     <ul class="sidebar-nav">
      <li><a href="/all-plants"><i class="fa fa-plus"></i> Add plants</a></li>
-     <li><a href="/plants">My garden</a></li>
+     <li><a href="/plants"><i class="fa fa-eye"></i> View garden details</a></li>
     </ul>
     <div class="sidebar-nav-footer"><a href="/sign-out" onclick="$("#menu-close").click();">Sign Out</a></div>
   </nav>

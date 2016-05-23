@@ -1,7 +1,5 @@
 <section id="portfolio" class="portfolio">
   <div class="container">
-   <div class="hidden remove-alert alert-success alert-dismissible" role="alert">
-   </div>
    <div class="row">
     <div class="col-lg-10 col-lg-offset-1 text-center">
       <!--       This heading will differ based on route add Ruby conditional here  -->   
@@ -10,7 +8,7 @@
 
       <% @user_plants.each do | plant | %>          
       <div class="row">
-      <div class="garden-listing panel panel-default" data-plant-id="<%= plant.id %>">
+      <div class="plant garden-listing panel panel-default" data-plant-id="<%= plant.id %>">
   <div class="panel-body">
         <div class="plant-card-listing">
           <div class="plant-image col-sm-4">

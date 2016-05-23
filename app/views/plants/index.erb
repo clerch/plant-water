@@ -50,7 +50,7 @@
               <input type="text" name="custom_name" class="form-control" placeholder="Give your plant a unique name (eg: Kitchen <%= plant.common_name %>">
             </div>
             <div class="form-group">
-              <input type="date" name="last_date_watered" class="form-control" placeholder="When did you last water your <%= plant.common_name %>?">
+              <input type="date" value="<%= Date.today %>" name="last_date_watered" class="form-control" placeholder="When did you last water your <%= plant.common_name %>?">
             </div>
             <div class="form-group">
               <label class="radio-inline"><input type="radio" value="<%= plant.low_water_frequency %>" name="custom_watering_frequency">Low Sunlight</label>

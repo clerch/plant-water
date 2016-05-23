@@ -22,20 +22,23 @@ $(document).ready(function() {
             data: $plantForm.serialize()
         }).done(function(response){
             var plant = response.plant;
-            $(".alert").removeClass("hidden")
-            .text("Your plant " + plant.new_plant.custom_name + " has been added");
+            showAlert({
+                type: 'success',
+                message: "Your plant " + plant.new_plant.custom_name + " has been added",
+            });
             $plantForm.closest('.modal').modal('hide');
-            $plantList.append('<li  class="plant-sidebar-listing"' 
-            +'    data-plant-id="' + plant.new_plant.id + '" >'+plant.new_plant.custom_name+' '+plant.common_name
-            +'    <small><a class="remove-plant">Remove plant</a></small>'
-            +'</li>');
+            $plantList.append('<li  class="plant-sidebar-listing" data-plant-id="' + plant.new_plant.id + '" >'  + 
+                '<span class="glyphicon glyphicon-leaf"></span>&nbsp;' +
+                plant.new_plant.custom_name + ' ' + plant.common_name + 
+                '<small><a class="remove-plant"><span class="glyphicon glyphicon-remove"></span>&nbsp;Remove plant</a></small></li>');
+            $("#sidebar-wrapper").addClass("active");
         });
 
     });
 
-    $('.plant-list').on('click', '.remove-plant', function(e){
+    $('.plant').on('click', '.remove-plant', function(e){
         e.preventDefault();
-        var $plant = $(e.target).closest('.plant-sidebar-listing')
+        var $plant = $(e.delegateTarget);
         var plantId = $plant.data('plant-id');
 
         if(confirm('Are you sure you want to remove this plant?')){
@@ -43,20 +46,33 @@ $(document).ready(function() {
                 type: "DELETE",
                 url: '/plant-delete/' + plantId,
                 // success: removePlant,
-            }).done(function(response){removePlant(response, $plant, plantId)})
+            }).done(function(response){
+                removePlant(plantId)
+                showAlert({
+                    type: 'success',
+                    message: "Plant successfully removed",
+                });
+            })
             // }).done(removePlant.bind(this, response, $plant, plantId)})
         }
     });
 });
 
-var removePlant = function(response, $plant, plantId){
-    $plant.remove();
-    $('.garden-listing[data-plant-id=' + plantId + ']').fadeOut(function(){
-        $(this).remove();
-        var plant = response.plant;
-        
+var removePlant = function(plantId){
+    $('.plant[data-plant-id=' + plantId + ']').fadeOut(function(){
+        $(this).remove();        
     });
 }
-
+function showAlert(options){
+    // Use jquery's extend function instead
+    var options = options || {};
+    var $alert = $('<div class="alert alert-' + (options.type || 'success') + '">' + options.message + '</div>')
+    $('#portfolio').prepend($alert);
+    window.setTimeout(function(){
+        $alert.fadeOut(function(){
+            $(this).remove();        
+        });
+    }, options.duration || 5000);
+}
     
 
