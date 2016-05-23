@@ -31,7 +31,7 @@
   <nav id="sidebar-wrapper">
 
     <a id="menu-close" href="#" class="btn btn-light btn-lg pull-right toggle"><i class="fa fa-times"></i></a>
-    <h2 class="sidebar-header">Manage Garden</h2>
+    <h2 class="sidebar-header">Current plants</h2>
     <ul class="plant-list sidebar-nav">
       <% user_plants.each do | plant | %>
       <li class="plant-sidebar-listing" data-plant-id="<%= plant.id %>"><span class="glyphicon glyphicon-leaf"></span> <%= plant.custom_name %> - <%= plant.plant_type.common_name %>
@@ -40,7 +40,7 @@
       <% end %>
     </ul>
     <ul class="sidebar-nav">
-     <li><a href="/all-plants">Add plants</a></li>
+     <li><a href="/all-plants"><i class="fa fa-plus"></i> Add plants</a></li>
      <li><a href="/plants">My garden</a></li>
     </ul>
     <div class="sidebar-nav-footer"><a href="/sign-out" onclick="$("#menu-close").click();">Sign Out</a></div>
