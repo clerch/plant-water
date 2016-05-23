@@ -21,10 +21,10 @@
 
           <div class="plant-details col-sm-8">
             <h2 class="h3"><%= plant.custom_name %>: <%= plant.plant_type.common_name %></h2>
-            <p>Last watered: <%= plant.last_date_watered.to_formatted_s(:long) %> | Next watering notification: <%= plant.next_water_date.to_formatted_s(:long) %></p>
+            <p>Last watered: <%= plant.last_date_watered.to_formatted_s(:long) %> </p> <p>Next watering notification: <%= plant.next_water_date.to_formatted_s(:long) %></p>
             <p><i class="fa fa-info-circle"></i> <%= plant.plant_type.watering_requirements %></p>
-            <p>Change soil every <%=plant.plant_type.soil_change_frequency %> days</p>
-            <p>Fertilize every <%=plant.plant_type.fertilizer_frequency %> days</p>
+     <!--        <p>Change soil every <%=plant.plant_type.soil_change_frequency %> days</p>
+            <p>Fertilize every <%=plant.plant_type.fertilizer_frequency %> days</p> -->
             <div class="plant-options">
               <ul class="plant-option-buttons">
                 <li>
