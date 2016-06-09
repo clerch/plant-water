@@ -63,6 +63,7 @@ var removePlant = function(plantId){
         $(this).remove();        
     });
 }
+
 function showAlert(options){
     // Use jquery's extend function instead
     var options = options || {};
@@ -74,5 +75,4 @@ function showAlert(options){
         });
     }, options.duration || 5000);
 }
-    
 
